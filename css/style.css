@@ -16,7 +16,7 @@ body {
   font-size: 14px;
   line-height: 1.7;
   color: gray;
-  background: #FAF7EB;
+  background: #e8e8e8;
 }
 
 #page {
@@ -47,13 +47,13 @@ body {
 }
 
 a {
-  color: #66D37E;
+  color: #EE6231;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
 a:hover, a:active, a:focus {
-  color: #66D37E;
+  color: #EE6231;
   outline: none;
   text-decoration: none;
 }
@@ -71,17 +71,17 @@ h1, h2, h3, h4, h5, h6, figure {
 
 ::-webkit-selection {
   color: #fff;
-  background: #66D37E;
+  background: #EE6231;
 }
 
 ::-moz-selection {
   color: #fff;
-  background: #66D37E;
+  background: #EE6231;
 }
 
 ::selection {
   color: #fff;
-  background: #66D37E;
+  background: #EE6231;
 }
 
 .container-wrap {
@@ -116,12 +116,11 @@ h1, h2, h3, h4, h5, h6, figure {
   font-size: 24px;
   margin: 0;
   padding: 0;
-  text-transform: uppercase;
   font-weight: 600;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Public Sans", sans-serif;
 }
 .fh5co-nav #fh5co-logo a span {
-  color: #66D37E;
+  color: #EE6231;
 }
 .fh5co-nav a {
   padding: 5px 10px;
@@ -137,12 +136,11 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 5px 0 0 0;
 }
 .fh5co-nav ul li {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Public Sans", sans-serif;
   padding: 0;
   margin: 0;
   list-style: none;
   display: inline;
-  text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
 }
@@ -163,7 +161,7 @@ h1, h2, h3, h4, h5, h6, figure {
   content: '';
   width: 58%;
   height: 2px;
-  background: #66D37E;
+  background: #EE6231;
   margin: 0 auto;
   opacity: 0;
   -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
@@ -244,7 +242,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #fff;
 }
 .fh5co-nav ul li.btn-cta a span {
-  background: #66d37e;
+  background: #EE6231;
   padding: 4px 10px;
   display: -moz-inline-stack;
   display: inline-block;
