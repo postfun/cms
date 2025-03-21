@@ -1,0 +1,37 @@
+name: Update Podcast Episodes JSON
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # This runs at the top of every hour. Adjust as needed.
+  workflow_dispatch:      # Allows you to manually trigger the workflow.
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install rss-parser
+
+      - name: Update episodes JSON
+        run: |
+          node update-episodes.js
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add episodes.json
+          git diff-index --quiet HEAD || git commit -m "Update episodes JSON"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
