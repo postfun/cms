@@ -27,15 +27,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          # Stash any unstaged changes.
-          git stash --include-untracked
-          # Pull remote changes using rebase.
-          git pull --rebase origin master
-          # Reapply any stashed changes (ignore errors if there are none).
-          git stash pop || true
-          # Add the updated episodes file from the assets folder.
           git add assets/episodes.json
-          # Commit if there are any changes.
           git diff-index --quiet HEAD || git commit -m "Update episodes JSON"
 
       - name: Push changes
@@ -45,4 +37,3 @@ jobs:
           branch: master
           directory: .
           force: true
-
