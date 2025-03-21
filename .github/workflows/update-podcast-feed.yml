@@ -28,8 +28,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add episodes.json
+          git add assets/episodes.json
           git diff-index --quiet HEAD || git commit -m "Update episodes JSON"
+
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
