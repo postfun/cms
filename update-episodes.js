@@ -8,7 +8,7 @@ const path = require('path');
 
   const episodes = feed.items.map(item => ({
     title: item.title,
-    link: item.link,
+    description: item.description || item.contentSnippet || '', // Get description if available
     pubDate: item.pubDate
   }));
 
