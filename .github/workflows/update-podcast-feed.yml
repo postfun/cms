@@ -2,8 +2,8 @@ name: Update Podcast Episodes JSON
 
 on:
   schedule:
-    - cron: '0 * * * *'   # This runs at the top of every hour. Adjust as needed.
-  workflow_dispatch:      # Allows you to manually trigger the workflow.
+    - cron: '0 * * * *'  # Runs at the top of every hour. Adjust as needed.
+  workflow_dispatch:
 
 jobs:
   update-feed:
@@ -21,20 +21,26 @@ jobs:
         run: npm install rss-parser
 
       - name: Update episodes JSON
-        run: |
-          node update-episodes.js
+        run: node update-episodes.js
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          # Stash any unstaged changes.
+          git stash --include-untracked
+          # Pull remote changes using rebase.
           git pull --rebase origin master
+          # Reapply any stashed changes (ignore errors if there are none).
+          git stash pop || true
+          # Add the updated episodes file from the assets folder.
           git add assets/episodes.json
+          # Commit if there are any changes.
           git diff-index --quiet HEAD || git commit -m "Update episodes JSON"
-
-
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          directory: .
