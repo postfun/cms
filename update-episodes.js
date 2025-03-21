@@ -14,6 +14,7 @@ const fs = require('fs');
     // Add other fields as needed.
   }));
 
-  // Write the episodes to episodes.json in a pretty-printed JSON format.
-  fs.writeFileSync('episodes.json', JSON.stringify(episodes, null, 2));
+ // Define the path relative to the repository root.
+  const outputPath = path.join(__dirname, 'assets', 'episodes.json');
+  fs.writeFileSync(outputPath, JSON.stringify(episodes, null, 2));
 })();
