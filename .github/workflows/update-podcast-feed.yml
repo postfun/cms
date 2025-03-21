@@ -37,3 +37,17 @@ jobs:
           branch: main
           directory: .
           force: true
+  deploy-pages:
+    needs: update-feed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        with:
+          # If your repository pages is set to "Deploy from a branch: main", use:
+          branch: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          build_dir: .
